@@ -27,11 +27,11 @@ public class PhilosopherRunnable implements Runnable {
                 table.lock();
                 //rezerwacja lewego widelca poprzez założenie blokady wewnętrznej na reprezentującym go obiekcie
                 synchronized (table.getFork(philosopher.getLeftFork())) {
-                    System.out.println(Thread.currentThread().getName() + " pobrał lewy widelec i czeka na pobranie widelca prawego "
+                    System.out.println(Thread.currentThread().getName() + " pobrał lewy widelec-"+philosopher.getLeftFork()%StartApp.NUMBER_OF_FORKS+" i czeka na pobranie widelca prawego "
                               +" "+Instant.now().getNano());
                     //rezerwacja prawego widelca poprzez założenie blokady wewnętrznej na reprezentującym go obiekcie
                     synchronized (table.getFork(philosopher.getRightFork())) {
-                        System.out.println(Thread.currentThread().getName() + " pobrał prawy widelec "+Instant.now().getNano());
+                        System.out.println(Thread.currentThread().getName() + " pobrał prawy widelec-"+philosopher.getRightFork()%StartApp.NUMBER_OF_FORKS+" "+Instant.now().getNano());
                         philosopher.eating();
                     }
                 }
@@ -42,4 +42,5 @@ public class PhilosopherRunnable implements Runnable {
             System.err.println(Thread.currentThread().getName() + " zakończył działanie.");
         }
     }
+    
 }

@@ -14,11 +14,12 @@ public class StartApp {
 
     public static final int PHILOSOPHERS_NUMBER = 5;
     public static final int THREADS_STATE_DELAY = 30;
+    public static final int NUMBER_OF_FORKS = 5;
     private static Thread[] threads = new Thread[PHILOSOPHERS_NUMBER];
 
     public static void main(String[] args) {
         try {
-            TableModel table = new TableModel(PHILOSOPHERS_NUMBER);
+            TableModel table = new TableModel(NUMBER_OF_FORKS);
             for (int i = 0; i < PHILOSOPHERS_NUMBER; i++) {
                 PhilosopherModel philosopher = new PhilosopherModel(i + 1);
                 threads[i] = new Thread(new PhilosopherRunnable(table, philosopher));
