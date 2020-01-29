@@ -1,0 +1,7 @@
+use src/main/java
+run pl/lodz/p/zsk/spjava/StartApp
+threads
+threadgroups
+threadgroup main
+suspend 0x1
+threads
